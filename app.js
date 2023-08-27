@@ -153,13 +153,25 @@ function updateSubTotalF () {
         const code ='"please discount 5%"'
         const inputPomo = document.getElementById('input-pomo-code');
         const inputPomoText = inputPomo.value;
-        if(code == inputPomoText.toLocaleLowerCase()){
-            let total =  document.getElementById('total')
-            let totalInnerText =total.innerText;
-            let totalPrice = parseInt(totalInnerText);
+        
+        // pomo code check
+        if (code == inputPomoText.toLocaleLowerCase()){
+            let total =  document.getElementById('total');
+            let totalPrice =parseInt(total.innerText);
             let discount =  totalPrice *5 /100;
             total.innerText =totalPrice - discount
-            alert(discount);
+            alert("your discount is :- " + discount);
+            
+            // focus and blur
+            document.getElementById('btn-pomo-apply').addEventListener('focus',function(){
+            document.body.style.backgroundColor ='black'            
+            document.body.style.color ='white' 
+            })           
+            
+            document.getElementById('btn-pomo-apply').addEventListener('blur',function(){
+            document.body.style.backgroundColor ='white'            
+            document.body.style.color ='black' 
+            })          
         }
         else{
             alert('wrong pomo code')
