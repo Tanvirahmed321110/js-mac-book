@@ -142,5 +142,28 @@ function updateSubTotalF () {
     const deliveryPrice = parseInt(document.getElementById('delivery-cost').innerText);
     
     let subTotal =pcPrice+ memoryPrice + stroagePrice + deliveryPrice;
+    let total = document.getElementById('total').innerText = subTotal
+    
     document.getElementById('sub-total').innerText = subTotal;
 }
+
+
+    // pomo code
+    document.getElementById('btn-pomo-apply').addEventListener('click',function(){
+        const code ='"please discount 5%"'
+        const inputPomo = document.getElementById('input-pomo-code');
+        const inputPomoText = inputPomo.value;
+        if(code == inputPomoText.toLocaleLowerCase()){
+            let total =  document.getElementById('total')
+            let totalInnerText =total.innerText;
+            let totalPrice = parseInt(totalInnerText);
+            let discount =  totalPrice *5 /100;
+            total.innerText =totalPrice - discount
+            alert(discount);
+        }
+        else{
+            alert('wrong pomo code')
+        }
+        
+        inputPomo.value = ''
+    })
